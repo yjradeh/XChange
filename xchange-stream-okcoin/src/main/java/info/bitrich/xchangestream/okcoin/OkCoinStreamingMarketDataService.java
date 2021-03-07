@@ -120,9 +120,9 @@ public class OkCoinStreamingMarketDataService implements StreamingMarketDataServ
   public Observable<Ticker> getTicker(CurrencyPair currencyPair, Object... args) {
     String channel =
         String.format(
-            "ok_sub_spot_%s_%s_ticker",
-            currencyPair.base.toString().toLowerCase(),
-            currencyPair.counter.toString().toLowerCase());
+            "spot/ticker:%s_%sT",
+            currencyPair.base.toString(),
+            currencyPair.counter.toString());
 
     return service
         .subscribeChannel(channel)
